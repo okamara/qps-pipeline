@@ -18,7 +18,7 @@ class SBTRunner extends AbstractRunner {
     }
 
     @Override
-    protected void build() {
+    public void build() {
         logger.info("SBTRunner->runJob")
         context.node("performance") {
 

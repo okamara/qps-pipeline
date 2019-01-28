@@ -30,6 +30,8 @@ class SBTRunner extends AbstractRunner {
 
                         def sbtHome = context.tool 'SBT'
 
+                        def args = Configuration.get("args")
+
                         context.timeout(time: Integer.valueOf(Configuration.get(Configuration.Parameter.JOB_MAX_RUN_TIME)), unit: 'MINUTES') {
                             context.sh "${sbtHome} ${args}"
                         }

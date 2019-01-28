@@ -28,7 +28,7 @@ class SBTRunner extends AbstractRunner {
 
                         scmClient.clone()
 
-                        def sbtHome = tool 'SBT'
+                        def sbtHome = context.tool 'SBT'
 
                         context.timeout(time: Integer.valueOf(Configuration.get(Configuration.Parameter.JOB_MAX_RUN_TIME)), unit: 'MINUTES') {
                             context.sh "${sbtHome} ${args}"

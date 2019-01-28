@@ -33,7 +33,7 @@ class SBTRunner extends AbstractRunner {
                         def args = Configuration.get("args")
 
                         context.timeout(time: Integer.valueOf(Configuration.get(Configuration.Parameter.JOB_MAX_RUN_TIME)), unit: 'MINUTES') {
-                            context.sh "${sbtHome} ${args}"
+                            context.sh "${sbtHome}/bin/sbt ${args}"
                         }
 
                     }

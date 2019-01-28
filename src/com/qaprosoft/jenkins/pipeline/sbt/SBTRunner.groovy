@@ -64,5 +64,11 @@ class SBTRunner extends AbstractRunner {
         }
     }
 
+    protected clean() {
+        context.stage('Wipe out Workspace') {
+            context.deleteDir()
+        }
+    }
+
 
 }

@@ -23,15 +23,16 @@ import groovy.transform.InheritConstructors
                 try {
                     context.timestamps {
 
+                        context.env.getEnvironment()
+
                         scmClient.clone()
 
                         def sbtHome = tool 'SBT'
 
-
                         context.timeout(time: Integer.valueOf(Configuration.get(Configuration.Parameter.JOB_MAX_RUN_TIME)), unit: 'MINUTES') {
                             context.sh "${sbtHome} ${args}"
-
                         }
+
                     }
                 } catch (Exception e) {
                     logger.error(Utils.printStackTrace(e))

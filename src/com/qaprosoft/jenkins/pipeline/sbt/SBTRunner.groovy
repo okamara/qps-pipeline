@@ -13,8 +13,6 @@ class SBTRunner extends AbstractRunner {
     public SBTRunner(context) {
         super(context)
         scmClient = new GitHub(context)
-
-        currentBuild = context.currentBuild
     }
 
     @Override

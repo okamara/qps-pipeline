@@ -30,6 +30,7 @@ class SBTRunner extends AbstractRunner {
 
             context.wrap([$class: 'BuildUser']) {
                 try {
+
                     context.timestamps {
 
                         context.env.getEnvironment()
@@ -42,6 +43,7 @@ class SBTRunner extends AbstractRunner {
 
                         context.timeout(time: Integer.valueOf(Configuration.get(Configuration.Parameter.JOB_MAX_RUN_TIME)), unit: 'MINUTES') {
                             context.sh "${sbtHome}/bin/sbt ${args}"
+
                         }
 
                     }
@@ -84,7 +86,7 @@ class SBTRunner extends AbstractRunner {
     }
 
     protected void uploadResultsToS3() {
-        def needToUpload = Configuration.get("needToUpload").toString().toBoolean()
+        def needToUpload = Configuration.get("needToUpload").toStAbstractRunnerean()
         if (needToUpload) {
             context.build job: 'loadTesting/Upload-Results-To-S3', wait: false
         }

@@ -17,6 +17,11 @@ class SBTCustomRunner extends AbstractRunner {
     String curDate = sdf.format(date)
     String randomCompareArchiveName = "loadTestingReports" + curDate + ".zip"
 
+    public SBTCustomRunner(context) {
+        super(context)
+        scmClient = new GitHub(context)
+    }
+
     @Override
     public void build() {
         logger.info("SBTRunner->runJob")

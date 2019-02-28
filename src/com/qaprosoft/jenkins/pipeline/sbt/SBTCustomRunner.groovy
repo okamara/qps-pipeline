@@ -12,6 +12,9 @@ import java.text.SimpleDateFormat
 @InheritConstructors
 class SBTCustomRunner extends AbstractRunner {
 
+    def date = new Date()
+    def sdf = new SimpleDateFormat("yyyyMMddHHmmss")
+    String curDate = sdf.format(date)
     String randomCompareArchiveName = "loadTestingReports" + curDate + ".zip"
 
     @Override

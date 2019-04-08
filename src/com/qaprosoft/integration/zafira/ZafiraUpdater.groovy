@@ -35,9 +35,11 @@ class ZafiraUpdater {
 
     public def queueZafiraTestRun(uuid) {
         if(isParamEmpty(Configuration.get("queue_registration")) || Configuration.get("queue_registration").toBoolean()) {
-            def response = zc.queueZafiraTestRun(uuid)
-            logger.info("Queued TestRun: " + formatJson(response))
-        }
+            if(isParamEmpty(Configuration.get('test_run_rules'))){
+                def response = zc.queueZafiraTestRun(uuid)
+                logger.info("Queued TestRun: " + formatJson(response))
+            }
+         }
     }
 
     public def smartRerun() {
@@ -131,6 +133,12 @@ class ZafiraUpdater {
         def testRun = getTestRun(uuid)
         if(!isParamEmpty(testRun) && isFailure(testRun.status)){
             currentBuild.result = BuildResult.FAILURE
+        }
+    }
+
+    public def sendSlackNotification(uuid, channels) {
+        if (!isParamEmpty(channels)){
+            return zc.sendSlackNotification(uuid, channels)
         }
     }
 

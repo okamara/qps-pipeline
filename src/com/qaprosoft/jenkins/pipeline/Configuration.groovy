@@ -31,7 +31,7 @@ public class Configuration {
 	public enum Parameter {
 
 		//vars
-		CARINA_CORE_VERSION("CARINA_CORE_VERSION", "6.0.9"),
+		CARINA_CORE_VERSION("CARINA_CORE_VERSION", "6.0.12"),
 		CORE_LOG_LEVEL("CORE_LOG_LEVEL", "INFO"),
 		//to enable default jacoco code coverage instrumenting we have to find a way to init valid AWS aws-jacoco-token on Jenkins preliminary
 		//the biggest problem is that AWS key can't be located in public repositories
@@ -74,6 +74,7 @@ public class Configuration {
 		S3_SAVE_SCREENSHOTS("s3_save_screenshots", "true"),
 		OPTIMIZE_VIDEO_RECORDING("optimize_video_recording", "false"),
 
+		VNC_DESKTOP("vnc_desktop", "%s://%s:%s/vnc/%s"),
 		VNC_PROTOCOL("vnc_protocol", "ws"),
 		VNC_HOST("vnc_host", "\${QPS_HOST}"),
 		VNC_PORT("vnc_port", "80"),
@@ -136,10 +137,6 @@ public class Configuration {
 			vars.put("vnc_port", "443")
 		}
 
-		for (var in vars) {
-			context.println(var)
-		}
-
 		// 2. Load all job parameters into unmodifiable map
 		def jobParams = context.currentBuild.rawBuild.getAction(ParametersAction)
 		for (param in jobParams) {
@@ -148,11 +145,31 @@ public class Configuration {
 			}
 		}
 
+		//3. Replace vars and/or params with overrideFields values
+		def overriddenFieldValues = params.get("overrideFields")
+		if(overriddenFieldValues){
+			for(value in overriddenFieldValues.split(",")){
+				def keyValueArray = value.trim().split("=")
+				def parameterName = keyValueArray[0]
+				def parameterValue = keyValueArray[1]
+				if(vars.get(parameterName)){
+					vars.put(parameterName, parameterValue)
+				} else if (vars.get(parameterName.toUpperCase())){
+					vars.put(parameterName.toUpperCase(), parameterValue)
+				} else {
+					params.put(parameterName, parameterValue)
+				}
+			}
+		}
+
+		for (var in vars) {
+			context.println(var)
+		}
+
 		for (param in params) {
 			context.println(param)
 		}
-
-		//3. TODO: investigate how private pipeline can override those values
+		//4. TODO: investigate how private pipeline can override those values
 		// public static void set(Map args) - ???
 	}
 
@@ -196,6 +213,7 @@ public class Configuration {
 
 	public static void remove(String key) {
 		vars.remove(key)
+		params.remove(key)
 	}
 
 }

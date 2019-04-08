@@ -39,8 +39,6 @@ public class TestJobFactory extends PipelineFactory {
 		this.name = currentSuite.getParameter("jenkinsJobName")
 		logger.info("JenkinsJobName: ${name}")
 
-		logger.info("testrail_search_interval: ${currentSuite.getParameter("testrail_search_interval")}")
-
 		def pipelineJob = super.create()
 		pipelineJob.with {
 
@@ -140,15 +138,17 @@ public class TestJobFactory extends PipelineFactory {
 				configure addHiddenParameter('suite', '', suiteName)
 				configure addHiddenParameter('ci_parent_url', '', '')
 				configure addHiddenParameter('ci_parent_build', '', '')
+				configure addHiddenParameter('slack_channels', '', getSuiteParameter("", "jenkinsSlackChannels", currentSuite))
 				configure addExtensibleChoice('ci_run_id', '', 'import static java.util.UUID.randomUUID\nreturn [randomUUID()]')
 				configure addExtensibleChoice('BuildPriority', "gc_BUILD_PRIORITY", "Priority of execution. Lower number means higher priority", "3")
 				configure addHiddenParameter('queue_registration', '', getSuiteParameter("true", "jenkinsQueueRegistration", currentSuite))
 				stringParam('thread_count', getSuiteParameter("1", "jenkinsDefaultThreadCount", currentSuite), 'number of threads, number')
-				stringParam('email_list', currentSuite.getParameter("jenkinsEmail").toString(), 'List of Users to be emailed after the test')
+				stringParam('email_list',  getSuiteParameter("", "jenkinsEmail", currentSuite), 'List of Users to be emailed after the test')
 				configure addHiddenParameter('failure_email_list', '', getSuiteParameter("", "jenkinsFailedEmail", currentSuite))
 				choiceParam('retry_count', getRetryCountArray(currentSuite), 'Number of Times to Retry a Failed Test')
 				booleanParam('rerun_failures', false, 'During \"Rebuild\" pick it to execute only failed cases')
-				configure addHiddenParameter('overrideFields', '' , getCustomFields(currentSuite))
+				stringParam('test_run_rules', '', 'Ex. PRIORITY=>P1&&P2;;OWNER=>user;;\nIf not empty, adding queued tests will be disabled.')
+				configure addHiddenParameter('overrideFields', '' , getSuiteParameter("", "overrideFields", currentSuite))
 
 				Map paramsMap = currentSuite.getAllParameters()
 				logger.info("ParametersMap: ${paramsMap}")
@@ -202,19 +202,6 @@ public class TestJobFactory extends PipelineFactory {
 			retryCountList.add(0, retryCount)
 		}
 		return retryCountList
-	}
-
-	protected String getCustomFields(currentSuite) {
-		def overrideFields = getGenericSplit(currentSuite, "overrideFields")
-		def prepCustomFields = ""
-
-		if (!overrideFields.isEmpty()) {
-			for (String customField : overrideFields) {
-				prepCustomFields = prepCustomFields + " -D" + customField
-			}
-		}
-
-		return prepCustomFields
 	}
 
 	protected def getDevices(String platform) {

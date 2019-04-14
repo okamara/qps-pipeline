@@ -9,7 +9,7 @@ import com.qaprosoft.jenkins.pipeline.AbstractRunner
 
 
 @InheritConstructors
-trait AbstarctSBTRunnner extends AbstarctRunnner{
+abstract class AbstarctSBTRunnner extends AbstractRunner{
 
     public AbstarctSBTRunnner(context) {
         super(context)

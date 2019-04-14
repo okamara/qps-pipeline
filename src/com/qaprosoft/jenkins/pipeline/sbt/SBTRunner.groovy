@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat
 
 
 @InheritConstructors
-class SBTRunner extends AbstractRunner {
+class SBTRunner extends AbstarctSBTRunnner {
 
 
     public SBTRunner(context) {

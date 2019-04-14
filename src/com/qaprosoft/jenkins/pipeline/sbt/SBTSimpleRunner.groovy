@@ -8,7 +8,7 @@ import groovy.transform.InheritConstructors
 
 
 @InheritConstructors
-class SBTSimpleRunner extends AbstarctRunnner implements AbstarctSBTRunnner  {
+class SBTSimpleRunner extends AbstarctRunnner implements AbstarctSBTRunnner {}
 
     public SBTSimpleRunner(context) {
         super(context)
@@ -58,6 +58,3 @@ class SBTSimpleRunner extends AbstarctRunnner implements AbstarctSBTRunnner  {
     public void onPullRequest() {
         //TODO: implement in future
     }
-
-
-}

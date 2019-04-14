@@ -1,9 +1,12 @@
 package com.qaprosoft.jenkins.pipeline.sbt
 
 import com.qaprosoft.jenkins.pipeline.Configuration
+import groovy.transform.InheritConstructors
+
 import java.util.Date
 import java.text.SimpleDateFormat
 
+@InheritConstructors
 trait AbstarctSBTRunnner {
 
     Date date = new Date()

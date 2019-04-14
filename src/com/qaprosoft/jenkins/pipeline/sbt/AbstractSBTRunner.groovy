@@ -7,8 +7,12 @@ import java.util.Date
 import java.text.SimpleDateFormat
 import com.qaprosoft.jenkins.pipeline.AbstractRunner
 
+@InheritConstructors
+public class AbstarctSBTRunnner extends AbstractRunner{
 
-public abstract class AbstarctSBTRunnner extends AbstractRunner{
+    public AbstarctSBTRunnner(context) {
+        super(context)
+    }
 
     protected def date = new Date()
     protected def sdf = new SimpleDateFormat("yyyyMMddHHmmss")
@@ -28,4 +32,19 @@ public abstract class AbstarctSBTRunnner extends AbstractRunner{
         }
     }
 
+    @Override
+    public void onPush() {
+        //TODO: implement in future
+    }
+
+    @Override
+    public void onPullRequest() {
+        //TODO: implement in future
+    }
+
+
+    @Override
+    public void build() {
+        //TODO: implement in future
+    }
 }

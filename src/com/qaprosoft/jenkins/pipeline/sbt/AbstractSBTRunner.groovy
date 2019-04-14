@@ -8,7 +8,6 @@ import java.text.SimpleDateFormat
 import com.qaprosoft.jenkins.pipeline.AbstractRunner
 
 
-@InheritConstructors
 public abstract class AbstarctSBTRunnner extends AbstractRunner{
 
     protected def date = new Date()

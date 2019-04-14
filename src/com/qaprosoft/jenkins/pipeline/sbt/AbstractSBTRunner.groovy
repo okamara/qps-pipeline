@@ -6,10 +6,10 @@ import java.text.SimpleDateFormat
 
 trait AbstarctSBTRunnner {
 
-    public def date = new Date()
-    public def sdf = new SimpleDateFormat("yyyyMMddHHmmss")
-    public String curDate = sdf.format(date)
-    public String randomCompareArchiveName = "loadTestingReports" + curDate + ".zip"
+    Date date = new Date()
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss")
+    String curDate = sdf.format(date)
+    String randomCompareArchiveName = "loadTestingReports" + curDate + ".zip"
 
     void clean() {
         context.stage('Wipe out Workspace') {

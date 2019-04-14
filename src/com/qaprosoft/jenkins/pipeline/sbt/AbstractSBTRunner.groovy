@@ -7,20 +7,20 @@ import groovy.transform.InheritConstructors
 import java.util.Date
 import java.text.SimpleDateFormat
 
-public abstract class AbstarctSBTRunnner extends AbstractRunner {
+trait AbstarctSBTRunnner extends AbstractRunner {
 
     public def date = new Date()
     public def sdf = new SimpleDateFormat("yyyyMMddHHmmss")
     public String curDate = sdf.format(date)
     public String randomCompareArchiveName = "loadTestingReports" + curDate + ".zip"
 
-    protected void clean() {
+    public void clean() {
         context.stage('Wipe out Workspace') {
             context.deleteDir()
         }
     }
 
-    protected void publishResultsInSlack(String jobToPublish) {
+    public void publishResultsInSlack(String jobToPublish) {
         def publishInSlack = Configuration.get("publishInSlack").toString().toBoolean()
         if (publishInSlack) {
             context.build job: jobToPublish, wait: false

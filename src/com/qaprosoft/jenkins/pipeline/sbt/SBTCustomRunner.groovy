@@ -8,7 +8,7 @@ import groovy.transform.InheritConstructors
 
 
 @InheritConstructors
-class SBTCustomRunner extends AbstarctRunnner implements AbstarctSBTRunnner{}
+class SBTCustomRunner implements AbstarctSBTRunnner{}
 
     public SBTCustomRunner(context) {
         super(context)

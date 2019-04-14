@@ -5,9 +5,11 @@ import groovy.transform.InheritConstructors
 
 import java.util.Date
 import java.text.SimpleDateFormat
+import com.qaprosoft.jenkins.pipeline.AbstractRunner
+
 
 @InheritConstructors
-trait AbstarctSBTRunnner {
+trait AbstarctSBTRunnner extends AbstarctRunnner{
 
     Date date = new Date()
     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss")

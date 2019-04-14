@@ -12,7 +12,6 @@ class SBTRunner extends AbstarctSBTRunnner {
 
     public SBTRunner(context) {
         super(context)
-        scmClient = new GitHub(context)
     }
 
     @Override

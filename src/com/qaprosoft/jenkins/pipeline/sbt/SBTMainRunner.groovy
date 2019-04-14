@@ -12,7 +12,6 @@ class SBTMainRunner extends AbstarctSBTRunnner {
 
     public SBTMainRunner(context) {
         super(context)
-        scmClient = new GitHub(context)
     }
 
     @Override

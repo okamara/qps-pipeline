@@ -8,11 +8,10 @@ import groovy.transform.InheritConstructors
 
 
 @InheritConstructors
-class SBTCustomRunner extends AbstarctRunnner implements AbstarctSBTRunnner {
+class SBTCustomRunner extends AbstarctSBTRunnner {
 
     public SBTCustomRunner(context) {
         super(context)
-        scmClient = new GitHub(context)
     }
 
     @Override

@@ -12,7 +12,6 @@ class SBTSimpleRunner extends AbstarctSBTRunnner {
 
     public SBTSimpleRunner(context) {
         super(context)
-        scmClient = new GitHub(context)
     }
 
     @Override

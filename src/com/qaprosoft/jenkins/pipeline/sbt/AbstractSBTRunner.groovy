@@ -13,6 +13,7 @@ public class AbstarctSBTRunnner extends AbstractRunner{
     public AbstarctSBTRunnner(context) {
         super(context)
         scmClient = new GitHub(context)
+        this.context=context
     }
 
     protected def date = new Date()

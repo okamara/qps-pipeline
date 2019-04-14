@@ -8,7 +8,12 @@ import java.text.SimpleDateFormat
 import com.qaprosoft.jenkins.pipeline.AbstractRunner
 
 @InheritConstructors
-public class AbstarctSBTRunnner extends AbstractRunner{
+abstract class AbstarctSBTRunnner extends AbstractRunner{
+
+    public AbstarctSBTRunnner(context) {
+        super(context)
+        scmClient = new GitHub(context)
+    }
 
     protected def date = new Date()
     protected def sdf = new SimpleDateFormat("yyyyMMddHHmmss")

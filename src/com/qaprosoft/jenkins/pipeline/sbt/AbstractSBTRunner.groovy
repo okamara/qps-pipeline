@@ -15,10 +15,6 @@ public abstract class AbstarctSBTRunnner extends AbstractRunner{
     protected String curDate = sdf.format(date)
     protected String randomCompareArchiveName = "loadTestingReports" + curDate + ".zip"
 
-    public AbstarctSBTRunnner(context) {
-        super(context)
-    }
-
     protected void clean() {
         context.stage('Wipe out Workspace') {
             context.deleteDir()

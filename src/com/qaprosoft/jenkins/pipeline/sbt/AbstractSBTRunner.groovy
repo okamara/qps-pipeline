@@ -11,6 +11,10 @@ import com.qaprosoft.jenkins.pipeline.AbstractRunner
 @InheritConstructors
 trait AbstarctSBTRunnner extends AbstarctRunnner{
 
+    public AbstarctSBTRunnner(context) {
+        super(context)
+    }
+
     Date date = new Date()
     SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss")
     String curDate = sdf.format(date)

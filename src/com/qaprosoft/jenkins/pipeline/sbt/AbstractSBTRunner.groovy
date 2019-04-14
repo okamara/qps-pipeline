@@ -2,10 +2,12 @@ package com.qaprosoft.jenkins.pipeline.sbt
 
 import com.qaprosoft.jenkins.pipeline.Configuration
 import com.qaprosoft.jenkins.pipeline.AbstractRunner
+import groovy.transform.InheritConstructors
+
 import java.util.Date
 import java.text.SimpleDateFormat
 
-
+@InheritConstructors
 public abstract class AbstarctSBTRunnner extends AbstractRunner {
 
     public def date = new Date()

@@ -7,7 +7,7 @@ import groovy.transform.InheritConstructors
 import java.util.Date
 import java.text.SimpleDateFormat
 
-trait AbstarctSBTRunnner extends AbstractRunner {
+trait AbstarctSBTRunnner  {
 
     public def date = new Date()
     public def sdf = new SimpleDateFormat("yyyyMMddHHmmss")

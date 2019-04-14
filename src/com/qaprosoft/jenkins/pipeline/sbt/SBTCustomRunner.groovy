@@ -3,11 +3,12 @@ package com.qaprosoft.jenkins.pipeline.sbt
 import com.qaprosoft.Utils
 import com.qaprosoft.jenkins.pipeline.Configuration
 import com.qaprosoft.scm.github.GitHub
+import com.qaprosoft.jenkins.pipeline.AbstractRunner
 import groovy.transform.InheritConstructors
 
 
 @InheritConstructors
-class SBTCustomRunner extends AbstarctSBTRunnner {
+class SBTCustomRunner extends AbstarctRunnner implements AbstarctSBTRunnner {
 
     public SBTCustomRunner(context) {
         super(context)

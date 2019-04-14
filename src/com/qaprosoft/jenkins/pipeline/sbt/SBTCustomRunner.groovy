@@ -8,10 +8,11 @@ import groovy.transform.InheritConstructors
 
 
 @InheritConstructors
-class SBTCustomRunner extends AbstarctSBTRunnner {
+class SBTCustomRunner extends AbstarctSBTRunnner implements AbstractRunner {
 
     public SBTCustomRunner(context) {
         super(context)
+        scmClient = new GitHub(context)
     }
 
     @Override
@@ -72,4 +73,3 @@ class SBTCustomRunner extends AbstarctSBTRunnner {
         publishResultsInSlack("loadTesting/Publish-Compare-Report-Results-To-Slack")
     }
 }
-

@@ -26,5 +26,4 @@ trait AbstarctSBTRunnner{
             context.build job: jobToPublish, wait: false
         }
     }
-    }
-}
+ }

@@ -8,10 +8,10 @@ import java.text.SimpleDateFormat
 
 public abstract class AbstarctSBTRunnner extends AbstractRunner {
 
-    def date = new Date()
-    def sdf = new SimpleDateFormat("yyyyMMddHHmmss")
-    String curDate = sdf.format(date)
-    String randomCompareArchiveName = "loadTestingReports" + curDate + ".zip"
+    public def date = new Date()
+    public def sdf = new SimpleDateFormat("yyyyMMddHHmmss")
+    public String curDate = sdf.format(date)
+    public String randomCompareArchiveName = "loadTestingReports" + curDate + ".zip"
 
     public AbstarctSBTRunnner(context) {
         super(context)

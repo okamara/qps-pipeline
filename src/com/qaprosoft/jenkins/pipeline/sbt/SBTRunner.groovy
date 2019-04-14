@@ -8,7 +8,7 @@ import groovy.transform.InheritConstructors
 
 
 @InheritConstructors
-class SBTRunner implements AbstarctSBTRunnner{}
+class SBTRunner implements AbstarctSBTRunnner {
 
     public SBTRunner(context) {
         super(context)
@@ -81,3 +81,4 @@ class SBTRunner implements AbstarctSBTRunnner{}
     protected void publishInSlack() {
         publishResultsInSlack("loadTesting/Publish-Results-To-Slack'")
     }
+}

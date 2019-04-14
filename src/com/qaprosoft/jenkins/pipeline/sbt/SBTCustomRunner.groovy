@@ -10,12 +10,7 @@ import java.text.SimpleDateFormat
 
 
 @InheritConstructors
-class SBTCustomRunner extends AbstractRunner {
-
-    def date = new Date()
-    def sdf = new SimpleDateFormat("yyyyMMddHHmmss")
-    String curDate = sdf.format(date)
-    String randomCompareArchiveName = "loadTestingReports" + curDate + ".zip"
+class SBTCustomRunner extends AbstarctSBTRunnner {
 
     public SBTCustomRunner(context) {
         super(context)
@@ -51,7 +46,7 @@ class SBTCustomRunner extends AbstractRunner {
                     throw e
                 } finally {
                     publishJenkinsReports()
-                    publishResultsInSlack()
+                    publishInSlack()
                     clean()
                 }
             }
@@ -76,15 +71,10 @@ class SBTCustomRunner extends AbstractRunner {
     }
 
 
-    protected void publishResultsInSlack() {
-        context.build job: 'loadTesting/Publish-Compare-Report-Results-To-Slack', wait: false
+    protected void publishInSlack() {
+        publishResultsInSlack("loadTesting/Publish-Compare-Report-Results-To-Slack")
     }
 
-    protected void clean() {
-        context.stage('Wipe out Workspace') {
-            context.deleteDir()
-        }
-    }
 
-    
+
 }

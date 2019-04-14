@@ -8,7 +8,7 @@ import groovy.transform.InheritConstructors
 
 
 @InheritConstructors
-class SBTMainRunner extends AbstractRunner {
+class SBTMainRunner extends AbstarctSBTRunnner {
 
     public SBTMainRunner(context) {
         super(context)
@@ -59,10 +59,5 @@ class SBTMainRunner extends AbstractRunner {
         //TODO: implement in future
     }
 
-    protected clean() {
-        context.stage('Wipe out Workspace') {
-            context.deleteDir()
-        }
-    }
 
 }

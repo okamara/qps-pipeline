@@ -13,11 +13,6 @@ import java.text.SimpleDateFormat
 class SBTRunner extends AbstractRunner {
 
 
-    def date = new Date()
-    def sdf = new SimpleDateFormat("yyyyMMddHHmmss")
-    String curDate = sdf.format(date)
-    String randomArchiveName = "loadTestingReports" + curDate + ".zip"
-
     public SBTRunner(context) {
         super(context)
         scmClient = new GitHub(context)
@@ -52,7 +47,7 @@ class SBTRunner extends AbstractRunner {
                     publishJenkinsReports()
                     clean()
                     uploadResultsToS3()
-                    publishResultsInSlack()
+                    publishInSlack()
                 }
             }
         }
@@ -78,11 +73,6 @@ class SBTRunner extends AbstractRunner {
         }
     }
 
-    protected void clean() {
-        context.stage('Wipe out Workspace') {
-            context.deleteDir()
-        }
-    }
 
     protected void uploadResultsToS3() {
         def needToUpload = Configuration.get("needToUpload").toString().toBoolean()
@@ -91,7 +81,7 @@ class SBTRunner extends AbstractRunner {
         }
     }
 
-    protected void publishResultsInSlack() {
-        context.build job: 'loadTesting/Publish-Results-To-Slack', wait: false
+    protected void publishInSlack() {
+        publishResultsInSlack("loadTesting/Publish-Results-To-Slack'")
     }
 }

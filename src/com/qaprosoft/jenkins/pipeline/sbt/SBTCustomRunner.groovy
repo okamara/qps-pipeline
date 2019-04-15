@@ -10,8 +10,7 @@ import groovy.transform.InheritConstructors
 @InheritConstructors
 class SBTCustomRunner extends AbstractSBTRunner {
 
-    String randomCompareArchiveName = "loadTestingReports" + curDate + ".zip"
-
+    public String randomCompareArchiveName = "loadTestingReports" + curDate + ".zip"
 
     public SBTCustomRunner(context) {
         super(context)

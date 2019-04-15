@@ -4,12 +4,12 @@ import com.qaprosoft.Utils
 import com.qaprosoft.jenkins.pipeline.Configuration
 import com.qaprosoft.scm.github.GitHub
 import com.qaprosoft.jenkins.pipeline.AbstractRunner
-import com.qaprosoft.jenkins.pipeline.AbstarctSBTRunnner
+import com.qaprosoft.jenkins.pipeline.AbstractSBTRunner
 import groovy.transform.InheritConstructors
 
 
 @InheritConstructors
-class SBTRunner extends AbstarctSBTRunnner {
+class SBTRunner extends AbstractSBTRunner {
 
     public SBTRunner(context) {
         super(context)

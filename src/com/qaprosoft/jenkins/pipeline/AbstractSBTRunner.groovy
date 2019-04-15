@@ -1,13 +1,15 @@
-package com.qaprosoft.jenkins.pipeline.sbt
+package com.qaprosoft.jenkins.pipeline
 
 import com.qaprosoft.jenkins.pipeline.Configuration
 import groovy.transform.InheritConstructors
 
+import com.qaprosoft.jenkins.pipeline.AbstractRunner
 import java.util.Date
 import java.text.SimpleDateFormat
 
+
 @InheritConstructors
-abstract class AbstarctSBTRunnner {
+abstract class AbstarctSBTRunnner extends AbstractRunner{
 
     def date = new Date()
     def sdf = new SimpleDateFormat("yyyyMMddHHmmss")

@@ -15,6 +15,7 @@ abstract class AbstractSBTRunner extends AbstractRunner{
     def sdf = new SimpleDateFormat("yyyyMMddHHmmss")
     String curDate = sdf.format(date)
     String randomCompareArchiveName = "loadTestingReports" + curDate + ".zip"
+    String randomArchiveName = "loadTestingReports" + curDate + ".zip"
 
     void clean() {
         context.stage('Wipe out Workspace') {

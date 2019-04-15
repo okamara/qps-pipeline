@@ -80,9 +80,9 @@ class SBTRunner extends AbstractSBTRunner {
     }
 
     protected void publishInSlack() {
-        def publishInSlack = Configuration.get("publishInSlack").toString().toBoolean()
-        if (publishInSlack) {
+     //   def publishInSlack = Configuration.get("publishInSlack").toString().toBoolean()
+     //   if (publishInSlack) {
             context.build job: 'loadTesting/Publish-Results-To-Slack', wait: false
-        }
+    //    }
     }
 }

@@ -10,8 +10,11 @@ import groovy.transform.InheritConstructors
 @InheritConstructors
 class SBTCustomRunner extends AbstractSBTRunner {
 
-    public String randomCompareArchiveName = "loadTestingReports" + curDate + ".zip"
-
+    def date = new Date()
+    def sdf = new SimpleDateFormat("yyyyMMddHHmmss")
+    String curDate = sdf.format(date)
+    String randomCompareArchiveName = "loadTestingReports" + curDate + ".zip"
+    
     public SBTCustomRunner(context) {
         super(context)
         scmClient = new GitHub(context)

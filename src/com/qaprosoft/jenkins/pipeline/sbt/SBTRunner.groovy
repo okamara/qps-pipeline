@@ -80,6 +80,6 @@ class SBTRunner extends AbstractSBTRunner {
     }
 
     protected void publishInSlack() {
-        publishResultsInSlack("loadTesting/Publish-Results-To-Slack'")
+        publishResultsInSlack("loadTesting/Publish-Results-To-Slack")
     }
 }

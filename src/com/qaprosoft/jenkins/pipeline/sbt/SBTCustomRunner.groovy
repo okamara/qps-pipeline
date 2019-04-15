@@ -3,14 +3,14 @@ package com.qaprosoft.jenkins.pipeline.sbt
 import com.qaprosoft.Utils
 import com.qaprosoft.jenkins.pipeline.Configuration
 import com.qaprosoft.scm.github.GitHub
-import com.qaprosoft.jenkins.pipeline.AbstractSBTRunner
+import com.qaprosoft.jenkins.pipeline.AbstractRunner
 import java.util.Date
-import java.text.SimpleDateFormat
 import groovy.transform.InheritConstructors
+import java.text.SimpleDateFormat
 
 
 @InheritConstructors
-class SBTCustomRunner extends AbstractSBTRunner {
+class SBTCustomRunner extends AbstractRunner {
 
     def date = new Date()
     def sdf = new SimpleDateFormat("yyyyMMddHHmmss")
@@ -51,7 +51,7 @@ class SBTCustomRunner extends AbstractSBTRunner {
                     throw e
                 } finally {
                     publishJenkinsReports()
-                    publishInSlack()
+                    publishResultsInSlack()
                     clean()
                 }
             }
@@ -76,10 +76,14 @@ class SBTCustomRunner extends AbstractSBTRunner {
     }
 
 
-    protected void publishInSlack() {
-        def publishInSlack = Configuration.get("publishInSlack").toString().toBoolean()
-        if (publishInSlack) {
-            context.build job: 'loadTesting/Publish-Compare-Report-Results-To-Slack', wait: false
+    protected void publishResultsInSlack() {
+        context.build job: 'loadTesting/Publish-Compare-Report-Results-To-Slack', wait: false
+    }
+
+    protected void clean() {
+        context.stage('Wipe out Workspace') {
+            context.deleteDir()
         }
     }
+
 }

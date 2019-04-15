@@ -45,7 +45,7 @@ class SBTRunner extends AbstractSBTRunner {
                     publishJenkinsReports()
                     clean()
                     uploadResultsToS3()
-                    publishInSlack()
+                    publishResultsInSlack()
                 }
             }
         }
@@ -84,5 +84,9 @@ class SBTRunner extends AbstractSBTRunner {
      //   if (publishInSlack) {
             context.build job: 'loadTesting/Publish-Results-To-Slack', wait: false
     //    }
+    }
+
+    protected void publishResultsInSlack() {
+        context.build job: 'loadTesting/Publish-Results-To-Slack', wait: false
     }
 }

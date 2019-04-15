@@ -77,6 +77,9 @@ class SBTCustomRunner extends AbstractSBTRunner {
 
 
     protected void publishInSlack() {
-        publishResultsInSlack("loadTesting/Publish-Compare-Report-Results-To-Slack")
+        def publishInSlack = Configuration.get("publishInSlack").toString().toBoolean()
+        if (publishInSlack) {
+            context.build job: 'loadTesting/Publish-Compare-Report-Results-To-Slack', wait: false
+        }
     }
 }

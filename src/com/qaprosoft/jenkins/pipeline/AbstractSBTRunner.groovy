@@ -23,10 +23,4 @@ abstract class AbstractSBTRunner extends AbstractRunner{
         }
     }
 
-    void publishResultsInSlack(String jobToPublish) {
-        def publishInSlack = Configuration.get("publishInSlack").toString().toBoolean()
-        if (publishInSlack) {
-            context.build job: jobToPublish, wait: false
-        }
-    }
 }

@@ -4,6 +4,8 @@ import com.qaprosoft.Utils
 import com.qaprosoft.jenkins.pipeline.Configuration
 import com.qaprosoft.scm.github.GitHub
 import com.qaprosoft.jenkins.pipeline.AbstractSBTRunner
+import java.util.Date
+import java.text.SimpleDateFormat
 import groovy.transform.InheritConstructors
 
 
@@ -14,7 +16,7 @@ class SBTCustomRunner extends AbstractSBTRunner {
     def sdf = new SimpleDateFormat("yyyyMMddHHmmss")
     String curDate = sdf.format(date)
     String randomCompareArchiveName = "loadTestingReports" + curDate + ".zip"
-    
+
     public SBTCustomRunner(context) {
         super(context)
         scmClient = new GitHub(context)

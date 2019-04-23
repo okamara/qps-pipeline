@@ -66,7 +66,7 @@ public class Configuration {
 		BUILD_NUMBER("BUILD_NUMBER", mustOverride),
 
 		SCREEN_RECORD_FTP("screen_record_ftp", "ftp://\${QPS_HOST}/%s.mp4"),
-		SCREEN_RECORD_HOST("screen_record_host", "http://\${QPS_HOST}/video/%s.mp4"),
+		SCREEN_RECORD_HOST("screen_record_host", "http://\${QPS_HOST}/video/%s"),
 		SCREEN_RECORD_USER("screen_record_user", "qpsdemo"),
 		SCREEN_RECORD_PASS("screen_record_pass", "qpsdemo"),
 		SCREEN_RECORD_DURATION("screen_record_duration", "1800"),
@@ -129,12 +129,6 @@ public class Configuration {
 			if (envVars.get(enumValue.getKey()) != null) {
 				vars.put(enumValue.getKey(), envVars.get(enumValue.getKey()))
 			}
-		}
-
-		if (context.env.getEnvironment().get("JENKINS_URL").contains("https")) {
-			vars.put("screen_record_host", "https://\${QPS_HOST}/video/%s.mp4")
-			vars.put("vnc_protocol", "wss")
-			vars.put("vnc_port", "443")
 		}
 
 		// 2. Load all job parameters into unmodifiable map

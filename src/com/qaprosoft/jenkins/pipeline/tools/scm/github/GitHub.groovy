@@ -19,6 +19,11 @@ class GitHub implements ISCM {
         this.context = context
         logger = new Logger(context)
         scmHost = Configuration.get(Configuration.Parameter.GITHUB_HOST)
+
+	gitHtmlUrl = "${Configuration.get(Configuration.Parameter.GITHUB_HTML_URL)}/${Configuration.get("repo")}"
+
+/*
+	https://\${GITHUB_HOST}/\${GITHUB_ORGANIZATION}
         if(scmHost.contains("bitbucket")) {
             gitHtmlUrl = "https://\${GITHUB_HOST}/\${GITHUB_ORGANIZATION}/${Configuration.get("repo")}"
         } else if(scmHost.contains("io")) {
@@ -27,6 +32,7 @@ class GitHub implements ISCM {
             //by default github family url
             gitHtmlUrl = "https://\${GITHUB_HOST}/\${GITHUB_ORGANIZATION}/${Configuration.get("repo")}"
         }
+*/
 
         credentialsId = "${Configuration.get("GITHUB_ORGANIZATION")}-${Configuration.get("repo")}"
         if(Configuration.get("scmURL") != null ) {

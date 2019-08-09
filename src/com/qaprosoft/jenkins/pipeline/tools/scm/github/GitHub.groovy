@@ -20,7 +20,7 @@ class GitHub implements ISCM {
         logger = new Logger(context)
         scmHost = Configuration.get(Configuration.Parameter.GITHUB_HOST)
 
-	gitHtmlUrl = "${Configuration.get(Configuration.Parameter.GITHUB_HTML_URL)}/${Configuration.get("repo")}"
+	gitHtmlUrl = "${Configuration.get(Configuration.Parameter.GITHUB_HTTPS_URL)}/${Configuration.get("repo")}"
 
 /*
 	https://\${GITHUB_HOST}/\${GITHUB_ORGANIZATION}

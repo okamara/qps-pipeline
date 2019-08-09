@@ -130,7 +130,7 @@ class Repository {
 
             // Support DEV related CI workflow
 //			TODO: analyze do we need system jobs for QA repo... maybe prametrize CreateRepository call
-            def gitUrl = Configuration.resolveVars("${Configuration.get(Configuration.Parameter.GITHUB_HTML_URL)}/${Configuration.get("repo")}")
+            def gitUrl = Configuration.resolveVars("${Configuration.get(Configuration.Parameter.GITHUB_HTTPS_URL)}/${Configuration.get("repo")}")
 
             def userId = isParamEmpty(Configuration.get("userId")) ? '' : Configuration.get("userId")
             def overrideFields = isParamEmpty(Configuration.get("overrideFields")) ? '' : Configuration.get("overrideFields")

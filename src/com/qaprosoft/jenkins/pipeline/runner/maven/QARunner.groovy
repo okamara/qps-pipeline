@@ -671,7 +671,7 @@ public class QARunner extends AbstractRunner {
         // Caused: java.io.IOException: remote file operation failed: /opt/jenkins/workspace/Automation/<JOB_NAME> at hudson.remoting.Channel@2834589:JNLP4-connect connection from
         Configuration.remove("device")
         //TODO: move it to the global jenkins variable
-        Configuration.set("capabilities.newCommandTimeout", "180")
+        Configuration.set("capabilities.newCommandTimeout", "300")
         Configuration.set("java.awt.headless", "true")
     }
 

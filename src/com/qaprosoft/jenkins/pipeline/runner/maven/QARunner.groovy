@@ -678,7 +678,8 @@ public class QARunner extends AbstractRunner {
     protected void prepareForAndroid() {
         logger.info("Runner->prepareForAndroid")
         Configuration.set("mobile_app_clear_cache", "true")
-        Configuration.set("capabilities.platformName", "ANDROID")
+        Configuration.set("capabilities.platform", "ANDROID")
+        //Configuration.set("capabilities.platformName", "ANDROID")
         Configuration.set("capabilities.autoGrantPermissions", "true")
         Configuration.set("capabilities.noSign", "true")
         Configuration.set("capabilities.appWaitDuration", "270000")

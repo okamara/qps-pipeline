@@ -683,7 +683,7 @@ public class QARunner extends AbstractRunner {
         Configuration.set("capabilities.noSign", "true")
         Configuration.set("capabilities.deviceReadyTimeout", "600000")
         Configuration.set("capabilities.androidInstallTimeout", "60000")
-        Configuration.set("capabilities.adbExecTimeout", "60000")
+        Configuration.set("capabilities.adbExecTimeout", "120000")
         Configuration.set("capabilities.uiautomator2ServerLaunchTimeout", "60000")
         Configuration.set("capabilities.uiautomator2ServerInstallTimeout", "60000")
         Configuration.set("capabilities.appWaitDuration", "900000")

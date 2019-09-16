@@ -30,13 +30,14 @@ public class PullRequestJobFactory extends PipelineFactory {
                 configure addHiddenParameter('GITHUB_ORGANIZATION', '', organization)
                 stringParam('repo', repo, 'Your GitHub repository for scanning')
             }
-            scm {
+/*            scm {
                 git {
                     remote {
                         url(scmRepoUrl)
                     }
                 }
             }
+*/
             properties {
                 githubProjectUrl(scmRepoUrl)
                 //TODO: test with removed "cron('H/5 * * * *')"

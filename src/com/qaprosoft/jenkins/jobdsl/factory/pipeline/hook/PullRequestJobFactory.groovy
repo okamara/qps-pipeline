@@ -30,6 +30,15 @@ public class PullRequestJobFactory extends PipelineFactory {
                 configure addHiddenParameter('GITHUB_ORGANIZATION', '', organization)
                 stringParam('repo', repo, 'Your GitHub repository for scanning')
             }
+    definition {
+        cpsScm {
+            scm {
+                    remote {
+                        url(scmRepoUrl)
+                    }
+            }
+        }
+    }
 /*            scm {
                 git {
                     remote {

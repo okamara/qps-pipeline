@@ -33,7 +33,6 @@ public class PushJobFactory extends PipelineFactory {
 
         pipelineJob.with {
             properties {
-                //TODO: add SCM artifacts
                 githubProjectUrl(scmRepoUrl)
                 pipelineTriggers {
                     triggers {
